@@ -12,7 +12,7 @@ export default function IntroductionAC() {
           <div className="mt-2 h-[2px] w-8 bg-primary" />
         </div>
 
-        <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-3">
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-5 md:grid md:grid-cols-3 md:place-items-center">
           <Card
             icon="building-2"
             text="Contabilidade para pequenas e médias empresas"

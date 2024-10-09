@@ -5,7 +5,13 @@ export default function BannerImage({ img }: { img: HTMLImageElement }) {
   return (
     <div className="my-6 flex items-center justify-center md:my-12">
       <Container>
-        <Image src={img} alt="Contabilidade" loading="lazy" />
+        <Image
+          src={img}
+          alt="Contabilidade"
+          loading="lazy"
+          placeholder="empty"
+          quality={80}
+        />
       </Container>
     </div>
   )
