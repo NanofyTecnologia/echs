@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import backgroundImg from '@/assets/img/arrow-bg.svg'
+import backgroundImg from '@/assets/img/arrow-bg.png'
 import Link from 'next/link'
 import { Instagram } from 'lucide-react'
 import { FaWhatsapp } from 'react-icons/fa'
@@ -8,13 +8,15 @@ export default function Welcome() {
   return (
     <main className="relative bg-aliceBlue" id="inicio">
       <Image
+        rel="preload"
+        fetchPriority="high"
         src={backgroundImg}
         alt="Plano de fundo empresarial"
         className="w-full object-cover"
-        loading="eager"
+        decoding="async"
+        loading="lazy"
         placeholder="empty"
-        quality={80}
-        priority
+        quality={90}
       />
 
       <div className="absolute left-0 top-1/2 w-full -translate-y-1/2 px-4">
@@ -26,7 +28,11 @@ export default function Welcome() {
           <div className="w-44 flex-wrap text-[6px] md:w-[448px] md:text-base">
             Proximidade e atenção, entender desafios e oferecer solução.
           </div>
-          <Link href="//#contato">
+          <Link
+            href="//#contato"
+            rel="noreferrer noopener"
+            aria-label="contato"
+          >
             <div className="mt-8 flex h-4 w-10 items-center justify-center rounded-sm bg-primary p-1 text-[6px] text-white duration-300 hover:bg-primary/80 md:h-11 md:w-32 md:rounded-md md:text-base">
               Contato
             </div>
@@ -40,6 +46,7 @@ export default function Welcome() {
             href="https://instagram.com/echs.contabilidade"
             target="_blank"
             rel="noreferrer noopener"
+            aria-label="instagram"
           >
             <Instagram className="h-3 w-3 md:h-6 md:w-6" />
           </Link>
@@ -49,6 +56,7 @@ export default function Welcome() {
             className="hover:underline"
             target="_blank"
             rel="noreferrer noopener"
+            aria-label="whatsapp"
           >
             <FaWhatsapp className="h-3 w-3 md:h-6 md:w-6" />
           </Link>

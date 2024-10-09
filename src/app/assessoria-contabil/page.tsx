@@ -1,6 +1,6 @@
 import IntroductionAC from '@/components/_Pages/AssessoriaContabil/Introduction'
 import BannerImage from '@/components/ui/BannerImage'
-import imageBanner from '@/assets/img/contabil2.svg'
+import imageBanner from '@/assets/img/contabil2.jpg'
 import Contact from '@/components/_Sections/Contact'
 
 export default function AssessoriaContabil() {

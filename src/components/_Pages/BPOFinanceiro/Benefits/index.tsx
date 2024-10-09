@@ -1,7 +1,7 @@
 import Container from '@/components/Container'
-import Image from 'next/image'
-import imageBanner from '@/assets/img/contabil.svg'
+import imageBanner from '@/assets/img/contabil.jpg'
 import ChevronsText from '@/components/ui/ChevronsText'
+import BannerImage from '@/components/ui/BannerImage'
 
 export default function BenefitsBPO() {
   return (
@@ -68,15 +68,7 @@ export default function BenefitsBPO() {
             é a melhor escolha para a maior parte das empresas.
           </p>
         </div>
-        <div className="mt-6">
-          <Image
-            src={imageBanner}
-            alt="Contabilidade"
-            loading="lazy"
-            placeholder="empty"
-            quality={80}
-          />
-        </div>
+        <BannerImage img={imageBanner} />
       </Container>
     </section>
   )

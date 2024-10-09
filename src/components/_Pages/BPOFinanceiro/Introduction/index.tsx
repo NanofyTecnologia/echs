@@ -1,4 +1,4 @@
-import img1 from '@/assets/img/img1.svg'
+import img1 from '@/assets/img/img1.jpg'
 import Container from '@/components/Container'
 import { Check } from 'lucide-react'
 import Image from 'next/image'
@@ -62,10 +62,12 @@ export default function IntroductionBPO() {
             <div className="flex items-center justify-center">
               <Image
                 src={img1}
-                alt="Contabilidade"
+                alt="contabilidade"
                 quality={80}
                 placeholder="empty"
                 loading="lazy"
+                fetchPriority="low"
+                className="rounded-sm"
               />
             </div>
           </div>

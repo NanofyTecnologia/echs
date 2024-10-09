@@ -1,6 +1,6 @@
 import IntroductionPF from '@/components/_Pages/PlanejamentoFinanceiro/Introduction'
 import BannerImage from '@/components/ui/BannerImage'
-import imageBanner from '@/assets/img/contabil4.svg'
+import imageBanner from '@/assets/img/contabil4.jpg'
 import Contact from '@/components/_Sections/Contact'
 
 export default function PlanejamentoFinanceiro() {

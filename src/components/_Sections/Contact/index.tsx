@@ -22,6 +22,7 @@ export default function Contact() {
                 className="hover:underline"
                 target="_blank"
                 rel="noreferrer noopener"
+                aria-label="whatsapp"
               >
                 <div className="ml-2">(16) 99312-7209</div>
               </Link>
@@ -44,6 +45,7 @@ export default function Contact() {
                 className="text-white/60 duration-300 hover:text-primary"
                 target="_blank"
                 rel="noreferrer noopener"
+                aria-label="whatsapp"
               >
                 clique aqui!
               </Link>

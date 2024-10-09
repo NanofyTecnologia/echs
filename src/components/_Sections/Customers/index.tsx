@@ -44,6 +44,10 @@ export default function Customers() {
                   src={slideImage1}
                   alt="slide_image"
                   className="h-12 w-24 object-contain md:h-16 md:w-56"
+                  placeholder="empty"
+                  loading="lazy"
+                  quality={50}
+                  fetchPriority="low"
                 />
               </div>
             </SwiperSlide>
@@ -53,6 +57,9 @@ export default function Customers() {
                   src={slideImage2}
                   alt="slide_image"
                   className="h-12 w-24 object-contain md:h-16 md:w-56"
+                  placeholder="empty"
+                  loading="lazy"
+                  quality={50}
                 />
               </div>
             </SwiperSlide>
@@ -62,6 +69,9 @@ export default function Customers() {
                   src={slideImage3}
                   alt="slide_image"
                   className="h-12 w-24 object-contain md:h-16 md:w-56"
+                  placeholder="empty"
+                  loading="lazy"
+                  quality={50}
                 />
               </div>
             </SwiperSlide>
@@ -71,6 +81,9 @@ export default function Customers() {
                   src={slideImage4}
                   alt="slide_image"
                   className="h-12 w-24 object-contain md:h-16 md:w-56"
+                  placeholder="empty"
+                  loading="lazy"
+                  quality={50}
                 />
               </div>
             </SwiperSlide>
@@ -80,6 +93,9 @@ export default function Customers() {
                   src={slideImage5}
                   alt="slide_image"
                   className="h-12 w-24 object-contain md:h-16 md:w-56"
+                  placeholder="empty"
+                  loading="lazy"
+                  quality={50}
                 />
               </div>
             </SwiperSlide>
@@ -89,6 +105,9 @@ export default function Customers() {
                   src={slideImage6}
                   alt="slide_image"
                   className="h-12 w-24 object-contain md:h-16 md:w-56"
+                  placeholder="empty"
+                  loading="lazy"
+                  quality={50}
                 />
               </div>
             </SwiperSlide>
