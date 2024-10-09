@@ -9,9 +9,11 @@ export default function Welcome() {
     <main className="relative bg-aliceBlue" id="inicio">
       <Image
         src={backgroundImg}
-        alt=""
+        alt="Plano de fundo empresarial"
         className="w-full object-cover"
         loading="eager"
+        placeholder="empty"
+        quality={80}
         priority
       />
 

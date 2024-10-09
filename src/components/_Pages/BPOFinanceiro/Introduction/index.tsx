@@ -60,7 +60,13 @@ export default function IntroductionBPO() {
               </p>
             </div>
             <div className="flex items-center justify-center">
-              <Image src={img1} alt="" priority />
+              <Image
+                src={img1}
+                alt="Contabilidade"
+                quality={80}
+                placeholder="empty"
+                loading="lazy"
+              />
             </div>
           </div>
           <p className="">

@@ -53,7 +53,7 @@ export default function IntroductionDSL() {
             obrigado.
           </p>
         </div>
-        <div className="mt-6 flex justify-between">
+        <div className="mt-6 flex flex-wrap justify-center gap-5 md:justify-between md:gap-0">
           <Card icon="star" text="Criar a cultura" />
           <Card icon="ticket-percent" text="Reduzir os custos" />
           <Card icon="chart-no-axes-combined" text="Aumentar as vendas" />

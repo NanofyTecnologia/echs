@@ -41,7 +41,7 @@ export default function Form() {
         id="formulario"
       >
         <Container>
-          <div className="h-full w-[380px] border-t-2 border-primary p-5 shadow-md md:w-[448px]">
+          <div className="h-full w-full border-t-2 border-primary p-5 shadow-md md:w-[448px]">
             <div className="w-full text-center text-sm font-bold md:text-lg">
               Formulário de Contato
             </div>
