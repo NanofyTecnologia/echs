@@ -30,7 +30,11 @@ export default function Services() {
               Soluções personalizadas para empresas de todos os portes.
               Economize tempo e dinheiro com uma assessoria contábil completa.
             </p>
-            <Link href="/assessoria-contabil">
+            <Link
+              href="/assessoria-contabil"
+              aria-label="saiba mais"
+              rel="noreferrer noopener"
+            >
               <div className=" mt-8 flex h-11 w-full items-center justify-center border-[1px] border-primary text-sm text-primary duration-300 hover:bg-primary hover:text-white">
                 Saiba mais
               </div>
@@ -49,7 +53,11 @@ export default function Services() {
               Simplifique sua gestão financeira! Concentre-se no crescimento do
               seu negócio enquanto cuidamos de suas contas.
             </p>
-            <Link href="/bpo-financeiro">
+            <Link
+              href="/bpo-financeiro"
+              aria-label="saiba mais"
+              rel="noreferrer noopener"
+            >
               <div className=" mt-8 flex h-11 w-full items-center justify-center border-[1px] border-primary text-sm text-primary duration-300 hover:bg-primary hover:text-white">
                 Saiba mais
               </div>
@@ -68,7 +76,11 @@ export default function Services() {
               O sucesso do seu negócio começa com uma contabilidade eficiente.
               Invista em um futuro financeiro seguro!
             </p>
-            <Link href="aconselhamento-financeiro">
+            <Link
+              href="aconselhamento-financeiro"
+              aria-label="saiba mais"
+              rel="noreferrer noopener"
+            >
               <div className=" mt-8 flex h-11 w-full items-center justify-center border-[1px] border-primary text-sm text-primary duration-300 hover:bg-primary hover:text-white">
                 Saiba mais
               </div>
@@ -87,7 +99,11 @@ export default function Services() {
               Análises precisas e decisões assertivas. Um bom planejamento
               contábil é a bússola que guia seu negócio para o sucesso.
             </p>
-            <Link href="/planejamento-financeiro">
+            <Link
+              href="/planejamento-financeiro"
+              aria-label="saiba mais"
+              rel="noreferrer noopener"
+            >
               <div className=" mt-8 flex h-11 w-full items-center justify-center border-[1px] border-primary text-sm text-primary duration-300 hover:bg-primary hover:text-white">
                 Saiba mais
               </div>
@@ -106,7 +122,11 @@ export default function Services() {
               Desvende os segredos e descubra como otimizar seus recursos,
               reduzir custos e aumentar sua rentabilidade.
             </p>
-            <Link href="/dobre-seus-lucros">
+            <Link
+              href="/dobre-seus-lucros"
+              aria-label="saiba mais"
+              rel="noreferrer noopener"
+            >
               <div className=" mt-8 flex h-11 w-full items-center justify-center border-[1px] border-primary text-sm text-primary duration-300 hover:bg-primary hover:text-white">
                 Saiba mais
               </div>
