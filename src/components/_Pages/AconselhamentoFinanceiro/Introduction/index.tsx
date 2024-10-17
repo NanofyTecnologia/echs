@@ -23,10 +23,6 @@ export default function IntroductionAF() {
             Fazer aconselhamento financeiro nada mais é do que nós Contadores
             Consultores, ajudar seu cliente a:
           </p>
-          <p>
-            Quanto fazemos o planejamento financeiro de um cliente, o ajudamos a
-            responder perguntas como:
-          </p>
           <CheckText text="Entender o que está acontecendo com as finanças da empresa dele;" />
           <CheckText text="Focar a atenção dele à execução do que vai trazer mais resultado;" />
           <CheckText text="Tomar as melhores decisões possíveis." />
