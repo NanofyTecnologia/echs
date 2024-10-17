@@ -26,6 +26,10 @@ export default function IntroductionPF() {
             pagar e a receber que já estão acordadas com clientes e
             fornecedores. Isso significa falar dos meses e/ou anos seguintes.
           </p>
+          <p>
+            Quanto fazemos o planejamento financeiro de um cliente, o ajudamos a
+            responder perguntas como:
+          </p>
           <ChevronsText text="Vou continuar de portas abertas até o final do ano?" />
           <ChevronsText text="Quanto devo crescer no ano que vem?" />
           <ChevronsText text="Quanto devo colocar no bolso na forma de lucros ao longo dos próximos anos?" />
