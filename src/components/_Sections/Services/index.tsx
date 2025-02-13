@@ -97,7 +97,7 @@ export default function Services() {
 
             <p className="text-center text-sm text-black/80">
               Análises precisas e decisões assertivas. Um bom planejamento
-              contábil é a bússola que guia seu negócio para o sucesso.
+              financeiro é a bússola que guia seu negócio para o sucesso.
             </p>
             <Link
               href="/planejamento-financeiro"
