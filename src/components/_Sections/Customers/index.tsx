@@ -8,7 +8,6 @@ import 'swiper/css/free-mode'
 import 'swiper/css/pagination'
 import 'swiper/css/autoplay'
 import slideImage1 from '@/assets/customers/bioart_client.png'
-import slideImage2 from '@/assets/customers/magus_client.png'
 import slideImage3 from '@/assets/customers/kopp_client.png'
 import slideImage4 from '@/assets/customers/md_client.jpg'
 import slideImage5 from '@/assets/customers/multipack_client.png'
@@ -48,18 +47,6 @@ export default function Customers() {
                   loading="lazy"
                   quality={50}
                   fetchPriority="low"
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="flex items-center justify-center">
-                <Image
-                  src={slideImage2}
-                  alt="slide_image"
-                  className="h-12 w-24 object-contain md:h-16 md:w-56"
-                  placeholder="empty"
-                  loading="lazy"
-                  quality={50}
                 />
               </div>
             </SwiperSlide>

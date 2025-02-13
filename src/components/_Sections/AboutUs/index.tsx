@@ -36,11 +36,10 @@ export default function AboutUs() {
                 profissionais especializados em gestão financeira empresarial.
               </p>
               <p>
-                Estamos trabalhando também com Gestão Financeira de Pequenas e
-                Médias Empresas. A Gestão Financeira é o coração do seu negócio.
-                Você deve controlar bem suas atividades financeiras para que sua
-                empresa se mantenha de pé, ou seja, para que permaneça no
-                mercado, gerando caixa e lucros.
+                A Gestão Financeira é o coração do seu negócio. Você deve
+                controlar bem suas atividades financeiras para que sua empresa
+                se mantenha de pé, ou seja, para que permaneça no mercado,
+                gerando caixa e lucros.
               </p>
               <p>
                 Entendemos que as finanças são a força vital de todo negócio,
