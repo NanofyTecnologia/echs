@@ -1,39 +1,45 @@
+import { zodResolver } from '@hookform/resolvers/zod'
 import { styled } from '@mui/material'
-import MuiTextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
+import MuiTextField from '@mui/material/TextField'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import axios from 'axios'
 import { toast } from 'react-toastify'
-import { inputComponentMaskPhone } from '@/lib/mask/InputPhoneMask'
+
 import Container from '@/components/Container'
+import { inputComponentMaskPhone } from '@/lib/mask/InputPhoneMask'
 
-type FieldValues = {
-  name: string
-  email: string
-  phone: string
-  subject: string
-  message: string
-}
+import { useSendEmail } from './_hooks/use-send-email'
+import { emailData, emailSchema } from './_schema'
 
-export default function Form() {
+export default function Content() {
   const {
-    handleSubmit,
-    register,
-    formState: { errors },
     reset,
-  } = useForm<FieldValues>()
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    try {
-      const response = await axios.post('api/email', data)
-      if (response.status !== 200) {
-        throw new Error('Erro ao enviar e-mail')
-      }
-      reset()
-      toast.success('Enviado com sucesso')
-    } catch (error) {
-      toast.error('Erro ao enviar')
-    }
+    register,
+    handleSubmit,
+    formState: { isSubmitting, errors },
+  } = useForm<emailData>({
+    resolver: zodResolver(emailSchema),
+  })
+
+  const { mutate: handleSendEmail } = useSendEmail()
+
+  const onSubmit: SubmitHandler<emailData> = (data) => {
+    handleSendEmail(
+      {
+        ...data,
+      },
+      {
+        onSuccess: () => {
+          toast.success('E-mail enviado com sucesso!')
+          reset()
+        },
+        onError: () => {
+          toast.error('Houve um problema ao enviar seu e-mail!')
+        },
+      },
+    )
   }
+
   return (
     <>
       <section
@@ -53,8 +59,9 @@ export default function Form() {
                   variant="outlined"
                   label="Nome"
                   autoComplete="off"
-                  error={!!errors.name}
+                  error={!!errors.name?.message}
                   className=""
+                  disabled={isSubmitting}
                 />
                 <TextField
                   {...register('email', { required: true })}
@@ -62,7 +69,8 @@ export default function Form() {
                   variant="outlined"
                   label="E-mail"
                   autoComplete="off"
-                  error={!!errors.email}
+                  error={!!errors.email?.message}
+                  disabled={isSubmitting}
                 />
                 <TextField
                   {...register('phone', { required: true })}
@@ -71,7 +79,8 @@ export default function Form() {
                   label="Telefone"
                   autoComplete="off"
                   InputProps={inputComponentMaskPhone}
-                  error={!!errors.phone}
+                  error={!!errors.phone?.message}
+                  disabled={isSubmitting}
                 />
                 <TextField
                   {...register('subject', { required: true })}
@@ -79,7 +88,8 @@ export default function Form() {
                   variant="outlined"
                   label="Assunto"
                   autoComplete="off"
-                  error={!!errors.subject}
+                  error={!!errors.subject?.message}
+                  disabled={isSubmitting}
                 />
                 <TextField
                   {...register('message')}
@@ -88,7 +98,8 @@ export default function Form() {
                   label="Mensagem"
                   multiline
                   rows={4}
-                  error={!!errors.message}
+                  error={!!errors.message?.message}
+                  disabled={isSubmitting}
                 />
                 <div className="text-end">
                   <Button
@@ -96,6 +107,7 @@ export default function Form() {
                     variant="contained"
                     type="submit"
                     size="large"
+                    disabled={isSubmitting}
                     sx={{
                       backgroundColor: '#e75c4f',
                       fontSize: 12,
