@@ -1,18 +1,21 @@
 'use client'
 
-import Container from '@/components/Container'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import Image from 'next/image'
+
 import { Autoplay, FreeMode, Pagination } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/free-mode'
-import 'swiper/css/pagination'
-import 'swiper/css/autoplay'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
 import slideImage1 from '@/assets/customers/bioart_client.png'
 import slideImage3 from '@/assets/customers/kopp_client.png'
 import slideImage4 from '@/assets/customers/md_client.jpg'
 import slideImage5 from '@/assets/customers/multipack_client.png'
 import slideImage6 from '@/assets/customers/tecnident_client.jpg'
-import Image from 'next/image'
+import Container from '@/components/Container'
+
+import 'swiper/css'
+import 'swiper/css/free-mode'
+import 'swiper/css/pagination'
+import 'swiper/css/autoplay'
 
 export default function Customers() {
   return (

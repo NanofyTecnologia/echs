@@ -1,51 +1,45 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
+
+import { render } from '@react-email/render'
 import nodemailer from 'nodemailer'
 
-export async function POST(req: Request) {
-  const { name, email, phone, subject, message } = await req.json()
+import { template } from '@/components/template/email'
+
+export async function POST(req: NextRequest) {
   try {
-    await sendEmail({ name, email, phone, subject, message })
-    return NextResponse.json({
-      sent: true,
-      message: 'Contato enviado',
+    const { name, email, phone, subject, message } = await req.json()
+
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      secure: true,
+      port: 465,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
     })
+
+    const emailHtml = await render(
+      template({
+        name,
+        email,
+        phone,
+        subject,
+        message,
+      }),
+    )
+
+    const info = transporter.sendMail({
+      from: process.env.NOREPLY_USER,
+      to: process.env.SENDER_USER,
+      subject: `Novo contato via site: ${subject}`,
+      replyTo: email,
+      html: emailHtml,
+    })
+
+    return NextResponse.json({ success: true, info })
   } catch (error) {
-    return NextResponse.json({
-      sent: false,
-      message: 'Erro ao enviar o contato',
-    })
+    console.error('Erro ao enviar e-mail:', error)
+    return NextResponse.json({ success: false, error }, { status: 500 })
   }
-}
-
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: { user: process.env.USER_AUTH, pass: process.env.PASS_AUTH },
-})
-
-const sendEmail = async (data: any) => {
-  const { name, email, phone, subject, message } = data
-  const body = `
-  <div>
-  <b>Nome:</b> ${name}
-  </div>
-  <div>
-    <b>Email:</b> ${email}
-  </div>
-  <div>
-    <b>Telefone:</b> ${phone}
-  </div>
-  <div>
-    <b>Assunto:</b> ${subject}
-  </div>
-  <div>
-    <b>Mensagem:</b> ${message}
-  </div>`
-  const info = await transporter.sendMail({
-    from: email,
-    to: 'contato@echscontabilidade.com.br',
-    subject,
-    html: body,
-  })
-
-  console.log('Message sent: %s', info.messageId)
 }
