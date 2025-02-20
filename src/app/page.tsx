@@ -1,23 +1,13 @@
 'use client'
 
-import Welcome from '@/components/_Sections/Welcome'
-import AboutUs from '@/components/_Sections/AboutUs'
-import Services from '@/components/_Sections/Services'
-import Contact from '@/components/_Sections/Contact'
-import Map from '@/components/_Sections/Map'
-import Customers from '@/components/_Sections/Customers'
-import Form from '@/components/_Sections/Form'
+// import Welcome from '@/components/_Sections/Welcome'
+// import AboutUs from '@/components/_Sections/AboutUs'
+// import Services from '@/components/_Sections/Services'
+// import Contact from '@/components/_Sections/Contact'
+// import Map from '@/components/_Sections/Map'
+// import Customers from '@/components/_Sections/Customers'
+// import Form from '@/components/_Sections/Form'
 
 export default function HomePage() {
-  return (
-    <>
-      <Welcome />
-      <AboutUs />
-      <Services />
-      <Customers />
-      <Contact />
-      <Form />
-      <Map />
-    </>
-  )
+  return <div></div>
 }
