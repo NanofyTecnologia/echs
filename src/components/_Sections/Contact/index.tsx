@@ -1,7 +1,10 @@
-import Container from '@/components/Container'
-import { Mail, MapPinned, NotebookPen } from 'lucide-react'
 import Link from 'next/link'
+
+import { Mail, MapPinned, NotebookPen } from 'lucide-react'
+
 import { FaWhatsapp } from 'react-icons/fa'
+
+import Container from '@/components/Container'
 
 export default function Contact() {
   return (
