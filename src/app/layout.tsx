@@ -11,8 +11,8 @@ import type { Metadata } from 'next'
 import { ReactNode } from 'react'
 import { ToastContainer } from 'react-toastify'
 
-import Footer from '@/components/Footer'
-import Navbar from '@/components/Navbar'
+// import Footer from '@/components/Footer'
+// import Navbar from '@/components/Navbar'
 import { Providers } from '@/providers'
 
 const lato = Lato({
@@ -34,9 +34,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           className={`bg-gradient-to-b from-white to-white text-black ${lato.className} ${lato.variable}`}
         >
           <ToastContainer autoClose={3000} position="bottom-right" />
-          <Navbar />
+          {/* <Navbar /> */}
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </body>
       </html>
     </Providers>
