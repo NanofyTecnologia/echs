@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@plugin '../../hero.ts';
+
+@source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --primary: #e75c4f;
+  --secondary: #28375D;
+  --arsenic: #39344C;
+  --lightgray: #d4d4d4;
+  --davygray: #585858;
+  --dark: #221f2e;
+  --aliceblue: #F3F6FB;
+  --destructive: #ff2c2c;
+
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-arsenic: var(--arsenic);
+  --color-lightgray: var(--lightgray);
+  --color-davygray: var(--davygray);
+  --color-dark: var(--dark);
+  --color-aliceblue: var(--aliceblue);
+  --color-destructive: var(--destructive);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
