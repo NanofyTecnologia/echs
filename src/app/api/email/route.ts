@@ -1,52 +1,52 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
 import nodemailer from 'nodemailer'
 
 import { env } from '@/lib/env/index.mjs'
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
+  const { name, email, phone, subject, message } = await req.json()
+
   try {
-    const { name, email, phone, subject, message } = await req.json()
+    await sendEmail({ name, email, phone, subject, message })
 
-    const transporter = nodemailer.createTransport({
-      host: env.SMTP_HOST,
-      port: 587,
-      secure: false,
-      requireTLS: true,
-      auth: {
-        user: env.SMTP_USER,
-        pass: env.SMTP_PASS,
-      },
-      from: env.NOREPLY_USER,
+    return NextResponse.json({
+      sent: true,
+      message: 'Contato enviado com sucesso!',
     })
+  } catch (error) {
+    if (error)
+      return NextResponse.json({
+        sent: false,
+        message: 'Erro ao enviar contato!',
+      })
+  }
+}
 
-    const info = transporter.sendMail({
-      from: env.NOREPLY_USER,
-      to: env.SENDER_USER,
-      subject: `Novo contato via site: ${subject}`,
-      replyTo: email,
-      text: text(),
-      html: html({ name, email, phone, subject, message }),
-    })
+interface SendEmailParams {
+  name: string
+  email: string
+  phone: string
+  subject: string
+  message: string
+}
 
-    return NextResponse.json({ success: true, info })
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: env.SMTP_USER,
+    pass: env.SMTP_PASS,
+  },
+})
 
-    function text() {
-      return `Contato no formulário do site`
-    }
-
-    interface HTMLParams {
-      name: string
-      email: string
-      phone: string
-      subject: string
-      message: string
-    }
-
-    function html(params: HTMLParams) {
-      const { name, email, phone, subject, message } = params
-
-      return `
+async function sendEmail({
+  name,
+  email,
+  phone,
+  subject,
+  message,
+}: SendEmailParams) {
+  const html = `
     <body>
       <div style="max-width: 600px; border: 0.5px solid; margin: 16px auto; border-radius: 8px; background-color: #ffffff; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
         <div style="background-color: #e75c4f; margin-bottom: 16px; padding: 16px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
@@ -97,9 +97,11 @@ export async function POST(req: NextRequest) {
       </div>
     </body>
   `
-    }
-  } catch (error) {
-    console.error('Erro ao enviar e-mail:', error)
-    return NextResponse.json({ success: false, error }, { status: 500 })
-  }
+
+  return transporter.sendMail({
+    from: `"Contato via Site" <${env.NOREPLY_USER}>`,
+    to: env.SENDER_USER,
+    subject: `Novo contato via site: ${subject}`,
+    html,
+  })
 }

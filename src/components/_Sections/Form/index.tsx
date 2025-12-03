@@ -1,11 +1,11 @@
 'use client'
 
-import { addToast } from '@heroui/react'
+import { addToast, Button } from '@heroui/react'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import Container from '@/components/Container'
-import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 
@@ -13,11 +13,12 @@ import { useSendEmail } from './_hooks/use-send-email'
 import { EmailData, emailSchema } from './_schema'
 
 export default function Content() {
+  const [isLoading, setIsLoading] = useState(false)
   const {
     reset,
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<EmailData>({
     resolver: zodResolver(emailSchema),
     defaultValues: {
@@ -32,6 +33,7 @@ export default function Content() {
   const { mutate: handleSendEmail } = useSendEmail()
 
   const onSubmit: SubmitHandler<EmailData> = (data) => {
+    setIsLoading(true)
     handleSendEmail(
       { ...data },
       {
@@ -42,6 +44,7 @@ export default function Content() {
             color: 'success',
           })
           reset()
+          setIsLoading(false)
         },
         onError: () => {
           addToast({
@@ -49,6 +52,7 @@ export default function Content() {
             description: 'Ocorreu um erro ao enviar o e-mail',
             color: 'danger',
           })
+          setIsLoading(false)
         },
       },
     )
@@ -71,42 +75,44 @@ export default function Content() {
                   {...register('name')}
                   placeholder="Nome"
                   error={errors.name?.message}
-                  disabled={isSubmitting}
+                  disabled={isLoading}
                 />
                 <Input
                   placeholder="E-mail"
                   autoComplete="off"
                   error={errors.email?.message}
-                  disabled={isSubmitting}
+                  disabled={isLoading}
                   {...register('email')}
                 />
                 <Input
                   placeholder="Celular"
                   autoComplete="off"
                   error={errors.phone?.message}
-                  disabled={isSubmitting}
+                  disabled={isLoading}
                   {...register('phone')}
                 />
                 <Input
                   placeholder="Assunto"
                   autoComplete="off"
                   error={errors.subject?.message}
-                  disabled={isSubmitting}
+                  disabled={isLoading}
                   {...register('subject')}
                 />
                 <Textarea
                   placeholder="Mensagem"
                   autoComplete="off"
                   error={errors.message?.message}
-                  disabled={isSubmitting}
+                  disabled={isLoading}
                   {...register('message')}
                 />
 
                 <div className="text-end">
                   <Button
-                    size="lg"
-                    disabled={isSubmitting}
-                    className="bg-primary hover:bg-primary/80 text-white duration-300"
+                    type="submit"
+                    size="md"
+                    isDisabled={isLoading}
+                    isLoading={isLoading}
+                    className="bg-primary hover:bg-primary/80 rounded-sm text-white duration-300"
                   >
                     Enviar
                   </Button>
