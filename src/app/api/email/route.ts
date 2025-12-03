@@ -2,23 +2,25 @@ import { NextRequest, NextResponse } from 'next/server'
 
 import nodemailer from 'nodemailer'
 
+import { env } from '@/lib/env/index.mjs'
+
 export async function POST(req: NextRequest) {
   try {
     const { name, email, phone, subject, message } = await req.json()
 
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: 587,
+      host: env.SMTP_HOST,
+      port: 465,
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: env.SMTP_USER,
+        pass: env.SMTP_PASS,
       },
-      from: process.env.NOREPLY_USER,
+      from: env.NOREPLY_USER,
     })
 
     const info = transporter.sendMail({
-      from: process.env.NOREPLY_USER,
-      to: process.env.SENDER_USER,
+      from: env.NOREPLY_USER,
+      to: env.SENDER_USER,
       subject: `Novo contato via site: ${subject}`,
       replyTo: email,
       text: text(),
